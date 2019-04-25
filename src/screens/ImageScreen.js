@@ -6,21 +6,11 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from "react-native";
 import { AntDesign } from "react-native-vector-icons";
 class ImageScreen extends React.Component {
-  static navigationOptions = {
-    title: "IMAGE",
-    headerStyle: {
-      backgroundColor: "#d96bff"
-    },
-    headerTintColor: "#fff",
-    headerTitleStyle: {
-      fontWeight: "bold",
-      color: "white"
-    }
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -35,6 +25,40 @@ class ImageScreen extends React.Component {
       };
     });
   };
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    let headerTitle = "ADD IMAGE";
+    let headerStyle = { backgroundColor: "#d96bff" };
+    let headerTitleStyle = {
+      fontWeight: "bold",
+      color: "white"
+    };
+    if (params === null) {
+      alert("Params null!!");
+    } else {
+      var headerRight = (
+        <AntDesign
+          name="plus"
+          size={40}
+          color="blue"
+          style={{ justifyContent: "flex-start" }}
+          //su dung navigate de truyen image thong qua navigation
+          onPress={() => {
+            params.onAdd();
+          }}
+        />
+      );
+    }
+    return { headerTitle, headerStyle, headerTitleStyle, headerRight };
+  };
+  _onAdd() {
+    this.props.navigation.navigate("AddImage", {
+      useImage: this.useImage
+    });
+  }
+  componentDidMount() {
+    this.props.navigation.setParams({ onAdd: this._onAdd.bind(this) });
+  }
   render() {
     const { image } = this.state;
     const numCol = 3;
@@ -45,7 +69,7 @@ class ImageScreen extends React.Component {
         style={styles.container}
       >
         <View>
-          <View style={styles.contentPlus}>
+          {/* <View style={styles.contentPlus}>
             <AntDesign
               name="plus"
               size={40}
@@ -59,15 +83,17 @@ class ImageScreen extends React.Component {
               }
             />
             <Text style={styles.header}>Add Image</Text>
-          </View>
+          </View> */}
           {/* <Image source={{ uri: image }} style={styles.img} /> */}
-          <FlatList
-            data={image}
-            numColumns={numCol}
-            renderItem={({ item }) => (
-              <Image source={{ uri: item }} style={styles.img} />
-            )}
-          />
+          <View style={styles.flatListImage}>
+            <FlatList
+              data={image}
+              numColumns={numCol}
+              renderItem={({ item }) => (
+                <Image source={{ uri: item }} style={styles.img} />
+              )}
+            />
+          </View>
         </View>
       </ImageBackground>
     );
@@ -101,6 +127,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     resizeMode: "contain",
     margin: 10
+  },
+  flatListImage: {
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 export default ImageScreen;
