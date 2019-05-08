@@ -50,6 +50,7 @@ class ToDoList extends React.Component {
                   paddingBottom: 20,
                   color: "#d96bff",
                   paddingLeft: 20,
+                  paddingRight: 20,
                   textDecorationLine: item.status ? "line-through" : "none"
                 }}
               >
@@ -76,10 +77,7 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderColor: "#d96bff"
+    margin: 20
   },
   content: {
     flexDirection: "row"

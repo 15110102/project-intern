@@ -63,7 +63,7 @@ export default class AddImageScreen extends React.Component {
         {
           offset: { x: 0, y: 0 },
           size: { width: result.width, height: result.height },
-          displaySize: { width: 50, height: 50 },
+          displaySize: { width: 200, height: 200 },
           resizeMode: "contain"
         },
         uri => resolve(uri),

@@ -1,5 +1,12 @@
 import React from "react";
-import { Button, View, Text, StyleSheet } from "react-native";
+import {
+  Button,
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard
+} from "react-native";
 import { Icon, AntDesign } from "react-native-vector-icons";
 import ToDoList from "../component/ToDoList";
 class ToDoAppScreen extends React.Component {
@@ -37,9 +44,15 @@ class ToDoAppScreen extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <ToDoList />
-      </View>
+      <TouchableWithoutFeedback
+        style={{ flex: 1 }}
+        onPress={Keyboard.dismiss}
+        accessible={false}
+      >
+        <View style={styles.container}>
+          <ToDoList />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

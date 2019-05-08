@@ -10,12 +10,11 @@ import ImageScreen from "../screens/ImageScreen";
 import ToDoAppScreen from "../screens/ToDoAppScreen";
 import AddToDoScreen from "../screens/AddToDoScreen";
 import AddImageScreen from "../screens/AddImageScreen";
-import AddToDoComponent from "../component/AddToDo";
 import { AntDesign, Entypo } from "react-native-vector-icons";
 const TodoStack = createStackNavigator(
   {
     Todo: { screen: ToDoAppScreen },
-    AddToDo: { screen: AddToDoScreen, AddToDoComponent }
+    AddToDo: { screen: AddToDoScreen }
   },
   {
     initialRouteName: "Todo"
