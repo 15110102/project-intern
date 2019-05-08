@@ -7,7 +7,9 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import logo from "../assets/logo.png";
 
@@ -33,38 +35,42 @@ class LoginScreen extends React.Component {
   };
   render() {
     return (
-      <ImageBackground
-        source={require("../assets/login1.jpg")}
-        style={styles.container}
+      <TouchableWithoutFeedback
+        style={{ flex: 1 }}
+        onPress={Keyboard.dismiss}
+        accessible={false}
       >
-        <View>
-          <View style={styles.border}>
-            <TextInput
-              style={styles.input}
-              placeholder={"Email"}
-              placeholderTextColor={"#000000"}
-              keyboardType={"email-address"}
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-            />
-          </View>
-          <View style={styles.border}>
-            <TextInput
-              style={styles.input}
-              placeholder={"Password"}
-              placeholderTextColor={"#000000"}
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-              secureTextEntry={true}
-            />
-          </View>
-          <View style={styles.btnLogin}>
-            <TouchableOpacity onPress={this._signin}>
+        <ImageBackground
+          source={require("../assets/login1.jpg")}
+          style={styles.container}
+        >
+          <View>
+            <View style={styles.border}>
+              <TextInput
+                style={styles.input}
+                placeholder={"Email"}
+                placeholderTextColor={"#000000"}
+                keyboardType={"email-address"}
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+            </View>
+            <View style={styles.border}>
+              <TextInput
+                style={styles.input}
+                placeholder={"Password"}
+                placeholderTextColor={"#000000"}
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+                secureTextEntry={true}
+              />
+            </View>
+            <TouchableOpacity style={styles.btnLogin} onPress={this._signin}>
               <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </ImageBackground>
+        </ImageBackground>
+      </TouchableWithoutFeedback>
     );
   }
 }

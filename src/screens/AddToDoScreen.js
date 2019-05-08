@@ -2,20 +2,22 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "react-native-vector-icons";
 import AddToDo from "../component/AddToDo";
+
 export default class AddToDoScreen extends React.Component {
+  static navigationOptions = {
+    title: "ADD TODO LIST",
+    headerStyle: {
+      backgroundColor: "#d96bff"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold",
+      color: "white"
+    }
+  };
   render() {
     return (
-        <View style={styles.container}>
-        <View style={styles.root}>
-        <AntDesign
-            name="close"
-            size={40}
-            color="black"
-            style={{ justifyContent: "flex-start" }}
-            onPress={() => this.props.navigation.navigate("Todo")}
-          />
-          <Text style={styles.header}>Add Todo</Text>
-        </View>
+      <View style={styles.container}>
         <View>
           <AddToDo />
         </View>
@@ -25,17 +27,9 @@ export default class AddToDoScreen extends React.Component {
 }
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start"
-  },
-  root: {
-    flexDirection: "row",
-    justifyContent: "center"
-  },
-  header: {
     flex: 1,
-    fontSize: 30,
-    textAlign: "center"
+    flexDirection: "column",
+    justifyContent: "center",
+    backgroundColor: "#fef9ff"
   }
 });

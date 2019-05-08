@@ -27,7 +27,7 @@ class ImageScreen extends React.Component {
   };
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    let headerTitle = "ADD IMAGE";
+    let headerTitle = "IMAGE";
     let headerStyle = { backgroundColor: "#d96bff" };
     let headerTitleStyle = {
       fontWeight: "bold",
@@ -40,7 +40,7 @@ class ImageScreen extends React.Component {
         <AntDesign
           name="plus"
           size={40}
-          color="blue"
+          color="white"
           style={{ justifyContent: "flex-start" }}
           //su dung navigate de truyen image thong qua navigation
           onPress={() => {
