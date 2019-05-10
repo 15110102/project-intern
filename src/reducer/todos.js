@@ -1,4 +1,4 @@
-const initialState = [{ id: 0, text: "" }];
+const initialState = [];
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TODO":
