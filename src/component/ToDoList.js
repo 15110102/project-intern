@@ -34,6 +34,8 @@ class ToDoList extends React.Component {
         ))} */}
         <FlatList
           data={todos}
+          keyExtractor={(item, index) => item.id}
+          extraData={this.state}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.content}
